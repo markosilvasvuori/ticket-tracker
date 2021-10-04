@@ -1,0 +1,49 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+input,
+textarea,
+select {
+    margin-bottom: 25px;
+}
+
+input,
+select {
+    height: 30px;
+    padding: 0 8px;
+}
+
+select,
+.form button {
+    width: 150px;
+}
+
+.form button {
+    background-color: rgb(92, 130, 199);
+}
+
+textarea {
+    height: 80px;
+    padding: 8px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.names {
+    display: flex;
+}
+
+.names div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.names div:first-child {
+    margin-right: 30px;
+}

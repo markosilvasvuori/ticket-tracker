@@ -1,22 +1,31 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
+import { TicketContext } from '../../../store/TicketContext';
 import Container from '../../Layout/Container';
 import Button from '../../UI/Button';
 import classes from './TicketForm.module.css';
 
-const TicketForm = () => {
+const TicketForm = props => {
+    const [tickets, setTickets] = useContext(TicketContext);
     const [enteredDetails, setEnteredDetails] = useState({
         title: '',
         description: '',
         reporter: '',
         assignee: '',
         date: '',
-        priority: ''
+        priority: 'Low'
     });
 
-    const addTicket = (e) => {
-        e.preventDefault();
-        console.log('ADD');
+    const [errors, setErrors] = useState({
+        isError: false,
+        title: '',
+        description: '',
+        reporter: '',
+        assignee: ''
+    });
+
+    const closeForm = () => {
+        props.onClose();
     };
 
     const onChangeTitle = (e) => {
@@ -73,12 +82,73 @@ const TicketForm = () => {
         ];
         return `${day}.${month + 1}.${year}`;
     };
+
+    const uniqueID = () => {
+        const dateString = Date.now().toString(36);
+        const randomness = Math.random().toString(36).substr(2);
+        return dateString + randomness;
+    };
+
+    const validateForm = (e) => {
+        e.preventDefault();
+        if (
+            enteredDetails.title === '' || 
+            enteredDetails.description === '' || 
+            enteredDetails.reporter === '' || 
+            enteredDetails.assignee === ''
+        ) {
+            setErrors({
+                isError: true,
+                title: enteredDetails.title.length ? '' : 'error',
+                description: enteredDetails.description.length ? '' : 'error',
+                reporter: enteredDetails.reporter.length ? '' : 'error',
+                assignee: enteredDetails.assignee.length ? '' : 'error'
+            });
+
+            console.log('ERROR!')
+        }
+
+        if (
+            enteredDetails.title !== '' && 
+            enteredDetails.description !== '' && 
+            enteredDetails.reporter !== '' && 
+            enteredDetails.assignee !== ''
+        ) {
+            setErrors({
+                isError: false,
+                title: '',
+                description: '',
+                reporter: '',
+                assignee: ''
+            });
+
+            addTicket();
+        }
+    };
+
+    const addTicket = () => {
+        setTickets(prevTickets => [
+            {
+                id: uniqueID(),
+                title: enteredDetails.title,
+                description: enteredDetails.description,
+                reporter: enteredDetails.reporter,
+                assignee: enteredDetails.assignee,
+                date: getDate(),
+                priority: enteredDetails.priority
+            },
+            ...prevTickets
+        ]);
+
+        closeForm();
+    };
     
     return (
         <Container>
-            <form className={classes.form} onSubmit={addTicket}>
+            <form className={classes.form} onSubmit={validateForm}>
                 <label htmlFor="title">Title</label>
                 <input 
+                    className={errors.title.length ? classes.error : ''}
                     id="title" type="text" 
                     placeholder="Title" 
                     value={enteredDetails.title} 
@@ -86,6 +156,7 @@ const TicketForm = () => {
                 />
                 <label htmlFor="description">Description</label>
                 <textarea 
+                    className={errors.description.length ? classes.error : ''}
                     id="description" 
                     placeholder="Description" 
                     value={enteredDetails.description} 
@@ -95,6 +166,7 @@ const TicketForm = () => {
                     <div>
                         <label htmlFor="reporter">Reporter</label>
                         <input 
+                            className={errors.reporter.length ? classes.error : ''}
                             id="reporter" 
                             type="text" 
                             placeholder="Reporter" 
@@ -105,6 +177,7 @@ const TicketForm = () => {
                     <div>
                         <label htmlFor="assignee">Assignee</label>
                         <input 
+                            className={errors.assignee.length ? classes.error : ''}
                             id="assignee" 
                             type="text" 
                             placeholder="Assignee" 
@@ -123,7 +196,10 @@ const TicketForm = () => {
                     <option>Medium</option>
                     <option>High</option>
                 </select>
-                <Button>Add</Button>
+                <div className={classes["button-container"]}>
+                    <Button>Add</Button>
+                    <Button onClick={closeForm}>Cancel</Button>
+                </div>
             </form>
         </Container>
     );

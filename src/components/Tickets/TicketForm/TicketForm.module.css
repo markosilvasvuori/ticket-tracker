@@ -45,5 +45,13 @@ label {
 }
 
 .names div:first-child {
-    margin-right: 30px;
+    margin-right: 20px;
+}
+
+.button-container button:first-child {
+    margin-right: 20px;
+}
+
+.error {
+    border: 2px solid red;
 }

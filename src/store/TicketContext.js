@@ -5,7 +5,7 @@ export const TicketContext = createContext();
 export const TicketProvider = props => {
     const [tickets, setTickets] = useState([
         {
-            id: 384,
+            id: 'default1',
             title: 'Title',
             description: 'Description',
             reporter: 'John Doe',
@@ -14,7 +14,7 @@ export const TicketProvider = props => {
             priority: 'Low'
         },
         {
-            id: 38334,
+            id: 'default2',
             title: 'Title 1',
             description: 'Description',
             reporter: 'John Doe',
@@ -23,7 +23,7 @@ export const TicketProvider = props => {
             priority: 'Medium'
         },
         {
-            id: 483,
+            id: 'default3',
             title: 'Title 2',
             description: 'Description',
             reporter: 'John Doe',
@@ -32,7 +32,7 @@ export const TicketProvider = props => {
             priority: 'High'
         },
         {
-            id: 48343,
+            id: 'default4',
             title: 'Title 2',
             description: 'Description',
             reporter: 'John Doe',

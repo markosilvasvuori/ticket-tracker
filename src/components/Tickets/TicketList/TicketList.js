@@ -8,8 +8,8 @@ import classes from './TicketList.module.css';
 const TicketList = () => {
     const [tickets, setTickets] = useContext(TicketContext);
 
-    const onDeleteHandler = () => {
-        console.log('DELETE');
+    const onDeleteHandler = (ticketID) => {
+        setTickets(tickets.filter(ticket => ticket.id !== ticketID));
     };
 
     return (
@@ -18,6 +18,7 @@ const TicketList = () => {
                 {tickets.map(ticket => (
                     <TicketItem 
                         key={ticket.id}
+                        id={ticket.id}
                         title={ticket.title}
                         description={ticket.description}
                         reporter={ticket.reporter}

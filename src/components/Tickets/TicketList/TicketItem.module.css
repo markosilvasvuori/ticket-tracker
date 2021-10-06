@@ -1,5 +1,7 @@
 .ticket {
     position: relative;
+    min-height: 210px;
+    margin-top: 10px;
     padding: 15px;
 }
 
@@ -18,9 +20,34 @@
     margin: 25px 0;
 }
 
-.ticket button {
+.button-red {
     color: #fff;
     background-color: red;
+}
+
+.button-green {
+    color: #fff;
+    background-color: green;
+}
+
+.low {
+    color: green;
+}
+
+.medium {
+    color: orange;
+}
+
+.high {
+    color: red;
+}
+
+.open {
+    background-color: lightgreen;
+}
+
+.solved {
+    background-color: lightblue;
 }
 
 .confirm-delete {
@@ -49,4 +76,9 @@
 
 .confirm-delete button:first-child {
     margin-right: 15px;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
 }

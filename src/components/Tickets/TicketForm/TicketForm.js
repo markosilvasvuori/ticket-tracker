@@ -104,8 +104,6 @@ const TicketForm = props => {
                 reporter: enteredDetails.reporter.length ? '' : 'error',
                 assignee: enteredDetails.assignee.length ? '' : 'error'
             });
-
-            console.log('ERROR!')
         }
 
         if (
@@ -130,6 +128,7 @@ const TicketForm = props => {
         setTickets(prevTickets => [
             {
                 id: uniqueID(),
+                isSolved: false,
                 title: enteredDetails.title,
                 description: enteredDetails.description,
                 reporter: enteredDetails.reporter,
@@ -144,7 +143,7 @@ const TicketForm = props => {
     };
     
     return (
-        <Container>
+        <Container className={`${classes.fullwidth} ${classes["margin-bottom"]}`}>
             <form className={classes.form} onSubmit={validateForm}>
                 <label htmlFor="title">Title</label>
                 <input 
@@ -200,6 +199,7 @@ const TicketForm = props => {
                     <Button>Add</Button>
                     <Button onClick={closeForm}>Cancel</Button>
                 </div>
+                {errors.isError && <div><p className={classes["error-msg"]}>Please enter all fields!</p></div>}
             </form>
         </Container>
     );

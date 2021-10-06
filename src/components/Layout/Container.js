@@ -1,8 +1,10 @@
 import classes from './Container.module.css';
 
 const Container = props => {
+    const styles = `${classes.container} ${props.className ? props.className : ''}`;
+
     return (
-        <div className={classes.container}>
+        <div className={styles}>
             {props.children}
         </div>
     );

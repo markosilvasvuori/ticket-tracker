@@ -6,6 +6,7 @@ export const TicketProvider = props => {
     const [tickets, setTickets] = useState([
         {
             id: 'default1',
+            isSolved: false,
             title: 'Title',
             description: 'Description',
             reporter: 'John Doe',
@@ -15,6 +16,7 @@ export const TicketProvider = props => {
         },
         {
             id: 'default2',
+            isSolved: false,
             title: 'Title 1',
             description: 'Description',
             reporter: 'John Doe',
@@ -24,6 +26,7 @@ export const TicketProvider = props => {
         },
         {
             id: 'default3',
+            isSolved: true,
             title: 'Title 2',
             description: 'Description',
             reporter: 'John Doe',
@@ -33,6 +36,7 @@ export const TicketProvider = props => {
         },
         {
             id: 'default4',
+            isSolved: false,
             title: 'Title 2',
             description: 'Description',
             reporter: 'John Doe',

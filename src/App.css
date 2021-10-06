@@ -5,5 +5,13 @@
 }
 
 .App {
-  padding-bottom: 25px;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 95px 25px 25px 25px;
 }

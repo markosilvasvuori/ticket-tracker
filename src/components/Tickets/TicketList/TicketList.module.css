@@ -5,3 +5,11 @@
     gap: 25px 20px;
     list-style: none;
 }
+
+.msg {
+    margin: auto;
+    font-size: 1.25rem;
+    font-weight: bold;
+    list-style: none;
+    color: rgb(105, 105, 105);
+}

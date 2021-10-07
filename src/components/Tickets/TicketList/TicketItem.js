@@ -35,10 +35,11 @@ const TicketItem = (props) => {
 
         let ticketsCopy = [...tickets];
         const ticket = ticketsCopy.filter(ticket => ticket.id === props.id);
-        ticket[0].isSolved = ticket[0].isSolved ? false : true;
         const index = ticketsCopy.findIndex(index => index.id === ticket[0].id);
+        ticket[0].isSolved = ticket[0].isSolved ? false : true;
         ticketsCopy[index] = ticket[0];
 
+        localStorage.setItem('stored-tickets', JSON.stringify(ticketsCopy));
         setTickets(ticketsCopy);
     };
 
@@ -54,8 +55,8 @@ const TicketItem = (props) => {
                     </Button>
                     <Button className={classes["button-red"]} onClick={toggleConfirmDelete}>X</Button>
                 </div>
-                <Card>
-                    <div className={classes.ticket}>
+                <Card className={classes.ticket}>
+                    {/* <div className={classes.ticket}> */}
                         <header>
                             <div>
                                 <h3>{props.title}</h3>
@@ -68,7 +69,7 @@ const TicketItem = (props) => {
                             <p>Priority: <span className={priorityColor()}>{props.priority}</span></p>
                             <p>Date: {props.date}</p>
                         </footer>
-                    </div>
+                    {/* </div> */}
                 </Card>
                 {isDeleting && 
                     <div className={classes["confirm-delete"]}>

@@ -28,47 +28,11 @@ const TicketForm = props => {
         props.onClose();
     };
 
-    const onChangeTitle = (e) => {
+    const onChangeDetail = (detail, e) => {
         setEnteredDetails(prevDetails => {
             return {
                 ...prevDetails,
-                title: e.target.value
-            }
-        });
-    };
-
-    const onChangeDescription = (e) => {
-        setEnteredDetails(prevDetails => {
-            return {
-                ...prevDetails,
-                description: e.target.value
-            }
-        });
-    };
-
-    const onChangeReporter = (e) => {
-        setEnteredDetails(prevDetails => {
-            return {
-                ...prevDetails,
-                reporter: e.target.value
-            }
-        });
-    };
-
-    const onChangeAssignee = (e) => {
-        setEnteredDetails(prevDetails => {
-            return {
-                ...prevDetails,
-                assignee: e.target.value
-            }
-        });
-    };
-
-    const onChangePriority = (e) => {
-        setEnteredDetails(prevDetails => {
-            return {
-                ...prevDetails,
-                priority: e.target.value
+                [detail]: e.target.value
             }
         });
     };
@@ -124,21 +88,39 @@ const TicketForm = props => {
         }
     };
 
-    const addTicket = () => {
-        setTickets(prevTickets => [
-            {
-                id: uniqueID(),
-                isSolved: false,
-                title: enteredDetails.title,
-                description: enteredDetails.description,
-                reporter: enteredDetails.reporter,
-                assignee: enteredDetails.assignee,
-                date: getDate(),
-                priority: enteredDetails.priority
-            },
-            ...prevTickets
-        ]);
+    // const addTicket = () => {
+    //     setTickets(prevTickets => [
+    //         {
+    //             id: uniqueID(),
+    //             isSolved: false,
+    //             title: enteredDetails.title,
+    //             description: enteredDetails.description,
+    //             reporter: enteredDetails.reporter,
+    //             assignee: enteredDetails.assignee,
+    //             date: getDate(),
+    //             priority: enteredDetails.priority
+    //         },
+    //         ...prevTickets
+    //     ]);
 
+    //     closeForm();
+    // };
+
+    const addTicket = () => {
+        let ticketsCopy = tickets;
+        const newTicket = {
+                        id: uniqueID(),
+                        isSolved: false,
+                        title: enteredDetails.title,
+                        description: enteredDetails.description,
+                        reporter: enteredDetails.reporter,
+                        assignee: enteredDetails.assignee,
+                        date: getDate(),
+                        priority: enteredDetails.priority
+                    };
+        ticketsCopy.push(newTicket);
+        localStorage.setItem('stored-tickets', JSON.stringify(ticketsCopy));
+        setTickets(ticketsCopy);
         closeForm();
     };
     
@@ -151,7 +133,7 @@ const TicketForm = props => {
                     id="title" type="text" 
                     placeholder="Title" 
                     value={enteredDetails.title} 
-                    onChange={onChangeTitle} 
+                    onChange={(e) => onChangeDetail('title', e)} 
                 />
                 <label htmlFor="description">Description</label>
                 <textarea 
@@ -159,7 +141,7 @@ const TicketForm = props => {
                     id="description" 
                     placeholder="Description" 
                     value={enteredDetails.description} 
-                    onChange={onChangeDescription} 
+                    onChange={(e) => onChangeDetail('description', e)} 
                 />
                 <div className={classes.names}>
                     <div>
@@ -170,7 +152,7 @@ const TicketForm = props => {
                             type="text" 
                             placeholder="Reporter" 
                             value={enteredDetails.reporter} 
-                            onChange={onChangeReporter} 
+                            onChange={(e) => onChangeDetail('reporter', e)} 
                         />
                     </div>
                     <div>
@@ -181,7 +163,7 @@ const TicketForm = props => {
                             type="text" 
                             placeholder="Assignee" 
                             value={enteredDetails.assignee} 
-                            onChange={onChangeAssignee} 
+                            onChange={(e) => onChangeDetail('assignee', e)} 
                         />
                     </div>
                 </div>
@@ -189,7 +171,7 @@ const TicketForm = props => {
                 <select 
                     id="priority" 
                     name="priority" 
-                    onChange={onChangePriority}
+                    onChange={(e) => onChangeDetail('priority', e)}
                 >
                     <option>Low</option>
                     <option>Medium</option>

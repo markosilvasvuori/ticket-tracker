@@ -7,19 +7,34 @@
     cursor: pointer;
 }
 
-.ticket header,
-.ticket footer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+.ticket-container {
+    height: 484px;
 }
 
-.ticket h3 {
-    margin-bottom: 8px;
+.names {
+    margin-bottom: 25px;
+}
+
+.names h4,
+.ticket footer p {
+    font-weight: bold;
 }
 
 .description {
     margin: 25px 0;
+}
+
+.ticket footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket footer span {
+    font-weight: normal;
+}
+
+.separator {
+    margin-top: 8px;
 }
 
 .button-red {
@@ -80,7 +95,27 @@
     margin-right: 15px;
 }
 
-.header-buttons {
+.ticket-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.crop-title,
+.crop-name,
+.crop-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.crop-title {
+    -webkit-line-clamp: 2;
+}
+
+.crop-name {
+    -webkit-line-clamp: 1;
+}
+
+.crop-description {
+    -webkit-line-clamp: 7;
 }

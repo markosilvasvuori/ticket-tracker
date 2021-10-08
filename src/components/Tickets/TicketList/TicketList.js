@@ -37,7 +37,9 @@ const TicketList = props => {
                 />
             ))}
         </ul>
-        {tickets.length === 0 && <li className={classes.msg}>No reported issues</li>}
+        {tickets.length === 0 && 
+            <li className={classes.msg}>No reported issues</li>
+        }
         </Fragment>
     );
 };

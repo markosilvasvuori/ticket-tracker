@@ -4,13 +4,17 @@ import { TicketContext } from '../../../store/TicketContext';
 import TicketItem from './TicketItem';
 import classes from './TicketList.module.css';
 
-const TicketList = () => {
+const TicketList = props => {
     const [tickets, setTickets] = useContext(TicketContext);
 
     const onDeleteHandler = (ticketID) => {
         const ticketsCopy = tickets.filter(ticket => ticket.id !== ticketID);
         localStorage.setItem('stored-tickets', JSON.stringify(ticketsCopy));
         setTickets(ticketsCopy);
+    };
+
+    const modalIsShowingHandler = (ticketID) => {
+        props.openModal(ticketID);
     };
 
     return (
@@ -27,7 +31,9 @@ const TicketList = () => {
                     assignee={ticket.assignee}
                     date={ticket.date}
                     priority={ticket.priority}
+                    priorityColor={ticket.priorityColor}
                     onDelete={onDeleteHandler}
+                    openModal={modalIsShowingHandler}
                 />
             ))}
         </ul>

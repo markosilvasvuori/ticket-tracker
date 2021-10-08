@@ -20,7 +20,8 @@ export const TicketProvider = props => {
                     reporter: 'John Doe',
                     assignee: 'Jane',
                     date: '4.10.2021',
-                    priority: 'Low'
+                    priority: 'Low',
+                    priorityColor: 'green'
                 },
                 {
                     id: 'default2',
@@ -30,7 +31,8 @@ export const TicketProvider = props => {
                     reporter: 'John Doe',
                     assignee: 'Jane',
                     date: '4.10.2021',
-                    priority: 'Medium'
+                    priority: 'Medium',
+                    priorityColor: 'orange'
                 }
             ];
         }

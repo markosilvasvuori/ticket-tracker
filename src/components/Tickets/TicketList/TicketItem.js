@@ -18,17 +18,17 @@ const TicketItem = (props) => {
         props.onDelete(props.id);
     };
 
-    const priorityColor = () => {
-        const priority = props.priority;
+    // const priorityColor = () => {
+    //     const priority = props.priority;
 
-        if (priority === 'Low') {
-            return classes.low;
-        } else if (priority === 'Medium') {
-            return classes.medium;
-        } else {
-            return classes.high;
-        }
-    };
+    //     if (priority === 'Low') {
+    //         return classes.low;
+    //     } else if (priority === 'Medium') {
+    //         return classes.medium;
+    //     } else {
+    //         return classes.high;
+    //     }
+    // };
 
     const handleStatus = (e) => {
         e.preventDefault();
@@ -43,6 +43,10 @@ const TicketItem = (props) => {
         setTickets(ticketsCopy);
     };
 
+    const modalIsShowingHandler = () => {
+        props.openModal(props.id);
+    };
+
     return (
         <li>
             <Container>
@@ -55,8 +59,7 @@ const TicketItem = (props) => {
                     </Button>
                     <Button className={classes["button-red"]} onClick={toggleConfirmDelete}>X</Button>
                 </div>
-                <Card className={classes.ticket}>
-                    {/* <div className={classes.ticket}> */}
+                <Card className={classes.ticket} onClick={modalIsShowingHandler}>
                         <header>
                             <div>
                                 <h3>{props.title}</h3>
@@ -66,10 +69,9 @@ const TicketItem = (props) => {
                         </header>
                         <p className={classes.description}>{props.description}</p>
                         <footer>
-                            <p>Priority: <span className={priorityColor()}>{props.priority}</span></p>
+                            <p>Priority: <span style={{color: props.priorityColor}}>{props.priority}</span></p>
                             <p>Date: {props.date}</p>
                         </footer>
-                    {/* </div> */}
                 </Card>
                 {isDeleting && 
                     <div className={classes["confirm-delete"]}>

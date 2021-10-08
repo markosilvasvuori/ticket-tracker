@@ -1,0 +1,36 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 40%;
+    left: 25%;
+    width: 50%;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.modal-overlay header,
+.modal-overlay footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-overlay h3 {
+    margin-bottom: 8px;
+}
+
+.description {
+    margin: 25px 0;
+}
+
+.modal-overlay button {
+    height: 30px;
+    background-color: lightblue;
+}

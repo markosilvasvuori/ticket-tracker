@@ -100,24 +100,6 @@ const TicketForm = props => {
         }
     };
 
-    // const addTicket = () => {
-    //     setTickets(prevTickets => [
-    //         {
-    //             id: uniqueID(),
-    //             isSolved: false,
-    //             title: enteredDetails.title,
-    //             description: enteredDetails.description,
-    //             reporter: enteredDetails.reporter,
-    //             assignee: enteredDetails.assignee,
-    //             date: getDate(),
-    //             priority: enteredDetails.priority
-    //         },
-    //         ...prevTickets
-    //     ]);
-
-    //     closeForm();
-    // };
-
     const addTicket = () => {
         let ticketsCopy = tickets;
         const newTicket = {
@@ -144,7 +126,7 @@ const TicketForm = props => {
                 <input 
                     className={errors.title.length ? classes.error : ''}
                     id="title" type="text" 
-                    placeholder="Title" 
+                    placeholder="Add a descriptive title" 
                     value={enteredDetails.title} 
                     onChange={(e) => onChangeDetail('title', e)} 
                 />
@@ -152,7 +134,7 @@ const TicketForm = props => {
                 <textarea 
                     className={errors.description.length ? classes.error : ''}
                     id="description" 
-                    placeholder="Description" 
+                    placeholder="Add a short description" 
                     value={enteredDetails.description} 
                     onChange={(e) => onChangeDetail('description', e)} 
                 />
@@ -194,7 +176,11 @@ const TicketForm = props => {
                     <Button>Add</Button>
                     <Button type="button" onClick={closeForm}>Cancel</Button>
                 </div>
-                {errors.isError && <div><p className={classes["error-msg"]}>Please enter all fields!</p></div>}
+                { errors.isError && 
+                    <div>
+                        <p className={classes["error-msg"]}>Please enter all fields!</p>
+                    </div> 
+                }
             </form>
         </Container>
     );

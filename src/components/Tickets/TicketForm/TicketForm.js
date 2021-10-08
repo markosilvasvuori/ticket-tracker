@@ -47,6 +47,18 @@ const TicketForm = props => {
         return `${day}.${month + 1}.${year}`;
     };
 
+    const priorityColor = () => {
+        const priority = enteredDetails.priority;
+
+        if (priority === 'Low') {
+            return 'green';
+        } else if (priority === 'Medium') {
+            return 'orange';
+        } else {
+            return 'red';
+        }
+    };
+
     const uniqueID = () => {
         const dateString = Date.now().toString(36);
         const randomness = Math.random().toString(36).substr(2);
@@ -56,25 +68,25 @@ const TicketForm = props => {
     const validateForm = (e) => {
         e.preventDefault();
         if (
-            enteredDetails.title === '' || 
-            enteredDetails.description === '' || 
-            enteredDetails.reporter === '' || 
-            enteredDetails.assignee === ''
+            enteredDetails.title.trim() === '' || 
+            enteredDetails.description.trim() === '' || 
+            enteredDetails.reporter.trim() === '' || 
+            enteredDetails.assignee.trim() === ''
         ) {
             setErrors({
                 isError: true,
-                title: enteredDetails.title.length ? '' : 'error',
-                description: enteredDetails.description.length ? '' : 'error',
-                reporter: enteredDetails.reporter.length ? '' : 'error',
-                assignee: enteredDetails.assignee.length ? '' : 'error'
+                title: enteredDetails.title.trim().length ? '' : 'error',
+                description: enteredDetails.description.trim().length ? '' : 'error',
+                reporter: enteredDetails.reporter.trim().length ? '' : 'error',
+                assignee: enteredDetails.assignee.trim().length ? '' : 'error'
             });
         }
 
         if (
-            enteredDetails.title !== '' && 
-            enteredDetails.description !== '' && 
-            enteredDetails.reporter !== '' && 
-            enteredDetails.assignee !== ''
+            enteredDetails.title.trim() !== '' && 
+            enteredDetails.description.trim() !== '' && 
+            enteredDetails.reporter.trim() !== '' && 
+            enteredDetails.assignee.trim() !== ''
         ) {
             setErrors({
                 isError: false,
@@ -116,9 +128,10 @@ const TicketForm = props => {
                         reporter: enteredDetails.reporter,
                         assignee: enteredDetails.assignee,
                         date: getDate(),
-                        priority: enteredDetails.priority
+                        priority: enteredDetails.priority,
+                        priorityColor: priorityColor()
                     };
-        ticketsCopy.push(newTicket);
+        ticketsCopy.unshift(newTicket);
         localStorage.setItem('stored-tickets', JSON.stringify(ticketsCopy));
         setTickets(ticketsCopy);
         closeForm();
@@ -179,7 +192,7 @@ const TicketForm = props => {
                 </select>
                 <div className={classes["button-container"]}>
                     <Button>Add</Button>
-                    <Button onClick={closeForm}>Cancel</Button>
+                    <Button type="button" onClick={closeForm}>Cancel</Button>
                 </div>
                 {errors.isError && <div><p className={classes["error-msg"]}>Please enter all fields!</p></div>}
             </form>

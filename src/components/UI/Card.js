@@ -4,7 +4,7 @@ const Card = props => {
     const styles = `${classes.card} ${props.className ? props.className : ''}`;
 
     return (
-        <div className={styles}>
+        <div className={styles} onClick={props.onClick}>
             {props.children}
         </div>
     );

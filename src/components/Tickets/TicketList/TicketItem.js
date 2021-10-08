@@ -18,26 +18,14 @@ const TicketItem = (props) => {
         props.onDelete(props.id);
     };
 
-    // const priorityColor = () => {
-    //     const priority = props.priority;
-
-    //     if (priority === 'Low') {
-    //         return classes.low;
-    //     } else if (priority === 'Medium') {
-    //         return classes.medium;
-    //     } else {
-    //         return classes.high;
-    //     }
-    // };
-
     const handleStatus = (e) => {
         e.preventDefault();
 
         let ticketsCopy = [...tickets];
-        const ticket = ticketsCopy.filter(ticket => ticket.id === props.id);
-        const index = ticketsCopy.findIndex(index => index.id === ticket[0].id);
-        ticket[0].isSolved = ticket[0].isSolved ? false : true;
-        ticketsCopy[index] = ticket[0];
+        const ticket = ticketsCopy.filter(ticket => ticket.id === props.id)[0];
+        const index = ticket.id
+        ticket.isSolved = ticket.isSolved ? false : true;
+        ticketsCopy[index] = ticket;
 
         localStorage.setItem('stored-tickets', JSON.stringify(ticketsCopy));
         setTickets(ticketsCopy);
@@ -49,8 +37,8 @@ const TicketItem = (props) => {
 
     return (
         <li>
-            <Container>
-                <div className={classes["header-buttons"]}>
+            <Container className={classes["ticket-container"]}>
+                <div className={classes["ticket-buttons"]}>
                     <Button 
                         className={props.isSolved ? classes.solved : classes.open}
                         onClick={handleStatus}
@@ -60,18 +48,18 @@ const TicketItem = (props) => {
                     <Button className={classes["button-red"]} onClick={toggleConfirmDelete}>X</Button>
                 </div>
                 <Card className={classes.ticket} onClick={modalIsShowingHandler}>
-                        <header>
-                            <div>
-                                <h3>{props.title}</h3>
-                                <p>{props.reporter}</p>
-                                <p>{props.assignee}</p>
-                            </div>
-                        </header>
-                        <p className={classes.description}>{props.description}</p>
-                        <footer>
-                            <p>Priority: <span style={{color: props.priorityColor}}>{props.priority}</span></p>
-                            <p>Date: {props.date}</p>
-                        </footer>
+                    <h3 className={classes["crop-title"]} style={{color: props.priorityColor}}>{props.title}</h3>
+                    <p className={`${classes.description} ${classes["crop-description"]}`}>{props.description}</p>
+                    <div className={classes.names}>
+                        <h4>Reporter:</h4>
+                        <p className={classes["crop-name"]}>{props.reporter}</p>
+                        <h4 className={classes.separator}>Assignee:</h4>
+                        <p className={classes["crop-name"]}>{props.assignee}</p>
+                    </div>
+                    <footer>
+                        <p>Priority: <span style={{color: props.priorityColor}}>{props.priority}</span></p>
+                        <p>Date: <span>{props.date}</span></p>
+                    </footer>
                 </Card>
                 {isDeleting && 
                     <div className={classes["confirm-delete"]}>

@@ -18,7 +18,7 @@ select {
 
 select,
 .form button {
-    width: 150px;
+    width: 100%;
 }
 
 .form button {
@@ -28,6 +28,7 @@ select,
 textarea {
     height: 80px;
     padding: 8px;
+    resize: vertical;
 }
 
 label {
@@ -36,12 +37,13 @@ label {
 
 .names {
     display: flex;
+    flex-direction: column;
 }
 
 .names div {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
 }
 
 .names div:first-child {
@@ -49,7 +51,7 @@ label {
 }
 
 .button-container button:first-child {
-    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .error {
@@ -64,10 +66,41 @@ label {
     background-color: red;
 }
 
-.fullwidth {
+.form-width {
     width: 100%;
+    max-width: 1380px;
 }
 
 .margin-bottom {
     margin-bottom: 25px;
+}
+
+@media screen and (min-width: 600px) {
+    select {
+        width: 50%;
+    }
+
+    .form button {
+        width: calc(50% - 10px);
+    }
+
+    .button-container button:first-child {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    select,
+    .form button {
+        width: 150px;
+    }
+
+    .names {
+        flex-direction: row;
+    }
+    
+    .names div {
+        width: calc(50% - 10px);
+    }
 }

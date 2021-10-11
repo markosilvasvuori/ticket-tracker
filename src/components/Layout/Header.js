@@ -9,8 +9,10 @@ const Header = props => {
 
     return (
         <header className={classes.header}>
-            <h1>Ticket Tracker</h1>
-            <Button onClick={toggleForm}>+ Add Ticket</Button>
+            <div className={classes.content}>
+                <h1>Ticket Tracker</h1>
+                <Button onClick={toggleForm}>+ Add Ticket</Button>
+            </div>
         </header>
     );
 };

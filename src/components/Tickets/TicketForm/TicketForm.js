@@ -120,7 +120,7 @@ const TicketForm = props => {
     };
     
     return (
-        <Container className={`${classes.fullwidth} ${classes["margin-bottom"]}`}>
+        <Container className={`${classes["form-width"]} ${classes["margin-bottom"]}`}>
             <form className={classes.form} onSubmit={validateForm}>
                 <label htmlFor="title">Title</label>
                 <input 

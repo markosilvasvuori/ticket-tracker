@@ -64,7 +64,7 @@ const TicketItem = (props) => {
                 {isDeleting && 
                     <div className={classes["confirm-delete"]}>
                         <p>Are you sure you want to delete this?</p>
-                        <div>
+                        <div className={classes["button-container"]}>
                             <Button className={classes["button-green"]} onClick={deleteTicket}>Yes</Button>
                             <Button className={classes["button-red"]} onClick={toggleConfirmDelete}>No</Button>
                         </div>

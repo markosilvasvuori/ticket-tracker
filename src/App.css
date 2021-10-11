@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+html,
+body {
+  width: 100%;
+}
+
 .App {
   position: relative;
   top: 0;

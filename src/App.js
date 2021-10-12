@@ -23,7 +23,7 @@ function App() {
         <div className="App">
             <Header onToggle={toggleFormHandler} />
             <TicketProvider>
-                { formIsShowing && <TicketForm onClose={toggleFormHandler} /> }
+                { formIsShowing && <TicketForm isOpen={formIsShowing} onClose={toggleFormHandler} /> }
                 <TicketList openModal={modalIsShowingHandler} />
                 { modal.isShowing && 
                     <Modal 

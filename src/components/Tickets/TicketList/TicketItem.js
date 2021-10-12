@@ -37,7 +37,7 @@ const TicketItem = (props) => {
 
     return (
         <li>
-            <Container className={`${classes["ticket-container"]} ${props.isSolved ? classes["ticket-solved"] : ''}`}>
+            <Container className={`${classes["ticket-container"]} ${props.isSolved ? classes["ticket-solved"] : ''} ${classes["pop-in"]}`}>
                 <div className={classes["ticket-buttons"]}>
                     <Button 
                         className={props.isSolved ? classes.solved : classes["button-green"]}

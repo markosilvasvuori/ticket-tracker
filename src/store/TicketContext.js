@@ -19,7 +19,7 @@ export const TicketProvider = props => {
                     assignee: 'Jane',
                     date: '4.10.2021',
                     priority: 'Low',
-                    priorityColor: 'green'
+                    priorityColor: '#0cca98'
                 },
                 {
                     id: 'default2',
@@ -30,7 +30,7 @@ export const TicketProvider = props => {
                     assignee: 'Jane',
                     date: '4.10.2021',
                     priority: 'Medium',
-                    priorityColor: 'orange'
+                    priorityColor: '#dd893b'
                 }
             ];
         }

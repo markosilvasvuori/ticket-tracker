@@ -10,6 +10,10 @@ import './App.css';
 function App() {
     const [formIsShowing, setFormIsShowing] = useState(false);
     const [modal, setModal] = useState({isShowing: false, ID: ''});
+
+    setTimeout(function() {
+        document.body.className = '';
+    }, 2000);
   
     const toggleFormHandler = () => {
         return setFormIsShowing(!formIsShowing);

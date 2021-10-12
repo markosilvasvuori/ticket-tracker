@@ -51,11 +51,11 @@ const TicketForm = props => {
         const priority = enteredDetails.priority;
 
         if (priority === 'Low') {
-            return 'green';
+            return '#0cca98';
         } else if (priority === 'Medium') {
-            return 'orange';
+            return '#dd893b';
         } else {
-            return 'red';
+            return '#dd4242';
         }
     };
 
@@ -120,7 +120,7 @@ const TicketForm = props => {
     };
     
     return (
-        <Container className={`${classes["form-width"]} ${classes["margin-bottom"]}`}>
+        <Container className={classes["form-container"]}>
             <form className={classes.form} onSubmit={validateForm}>
                 <label htmlFor="title">Title</label>
                 <input 
@@ -173,8 +173,8 @@ const TicketForm = props => {
                     <option>High</option>
                 </select>
                 <div className={classes["button-container"]}>
-                    <Button>Add</Button>
-                    <Button type="button" onClick={closeForm}>Cancel</Button>
+                    <Button className={classes["button-green"]}>Add</Button>
+                    <Button className={classes["button-red"]} type="button" onClick={closeForm}>Cancel</Button>
                 </div>
                 { errors.isError && 
                     <div>

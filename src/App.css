@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+body.preload * {
+  animation-duration: 0s !important;
+  -webkit-animation-duration: 0s !important;
+  transition: transform 0s !important;
+}
+
 html,
 body {
   width: 100%;

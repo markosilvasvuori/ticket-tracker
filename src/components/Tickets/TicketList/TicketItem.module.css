@@ -39,6 +39,7 @@ footer h4 {
 
 .description {
     margin: 30px 0;
+    white-space: pre-line;
 }
 
 .ticket footer {
@@ -68,7 +69,6 @@ footer h4 {
 
 .solved {
     background: linear-gradient(to right, #6acdf5, #5392f0);
-    /* background: linear-gradient(to right, #6e40eb 40%, #8d2fcc); */
 }
 
 .solved:hover {

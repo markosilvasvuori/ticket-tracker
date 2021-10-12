@@ -22,7 +22,6 @@
 
 .header button {
     position: relative;
-    /* background: linear-gradient(to right, #6e40eb 40%, #8d2fcc); */
     overflow: hidden;
     z-index: 1;
 }

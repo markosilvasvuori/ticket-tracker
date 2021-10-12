@@ -38,7 +38,7 @@ const Modal = props => {
                         <p style={{color: ticket.priorityColor}}>{ticket.priority}</p>
                     </div>
                     <div>
-                        <h4>Date:</h4>
+                        <h4>Created:</h4>
                         <p>{ticket.date}</p>
                     </div>
                 </footer>

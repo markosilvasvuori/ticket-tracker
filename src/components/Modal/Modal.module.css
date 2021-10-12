@@ -46,6 +46,10 @@
     background: linear-gradient(to right, #dd4242, #c93051);
 }
 
+.modal-overlay button:hover {
+    background: linear-gradient(to right, #c03939, #a52843);
+}
+
 @media screen and (min-width: 768px) {
     .modal-overlay {
         margin-left: -35%;

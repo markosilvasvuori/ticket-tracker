@@ -8,6 +8,11 @@
     font-size: 0.875rem;
 }
 
+.pop-in {
+    animation-duration: 1s;
+    animation-name: popin;
+}
+
 .ticket:hover {
     background-color: #343940;
 }
@@ -136,6 +141,20 @@ footer h4 {
 
 .crop-description {
     -webkit-line-clamp: 7;
+}
+
+@keyframes popin {
+    0% {
+        transform: scale(.95);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @media screen and (min-width: 1024px) {

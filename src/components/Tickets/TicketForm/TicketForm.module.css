@@ -1,13 +1,34 @@
+.form-container {
+    width: 100%;
+    max-width: 1380px;
+    margin-bottom: 25px;
+    /* transform: scaleY(0); */
+    transition: all .4s ease-in-out;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .29);
+}
+
 .form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
+.form-open {
+    transform: scaleY(1);
+}
+
+.form-closed {
+    transform: scaleY(0);
+}
+
 input,
 textarea,
 select {
     margin-bottom: 25px;
+    color: #f8f8f8;
+    background-color: #2e3238;
+    border: 1px solid #7a8491;
+    border-radius: 4px;
 }
 
 input,
@@ -21,8 +42,25 @@ select,
     width: 100%;
 }
 
-.form button {
-    background-color: rgb(92, 130, 199);
+input::placeholder,
+textarea::placeholder {
+    color: #98a0aa;
+}
+
+.button-red {
+    background: linear-gradient(to right, #dd4242, #c93051);
+}
+
+.button-red:hover {
+    background: linear-gradient(to right, #c03939, #a52843);
+}
+
+.button-green {
+    background: linear-gradient(to right, #08c794, #03a1b6);
+}
+
+.button-green:hover {
+    background: linear-gradient(to right, #069b73 40%, #027585);
 }
 
 textarea {
@@ -55,24 +93,16 @@ label {
 }
 
 .error {
-    border: 2px solid red;
+    border: 2px solid #dd4242;
 }
 
 .error-msg {
-    display: inline-block;
+    width: 100%;
     margin-top: 20px;
     padding: 8px 12px;
-    color: #fff;
-    background-color: red;
-}
-
-.form-width {
-    width: 100%;
-    max-width: 1380px;
-}
-
-.margin-bottom {
-    margin-bottom: 25px;
+    text-align: center;
+    background-color: #dd4242;
+    border-radius: 8px;
 }
 
 @media screen and (min-width: 600px) {

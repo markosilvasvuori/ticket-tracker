@@ -2,35 +2,35 @@
     display: grid;
     width: 100%;
     max-width: 390px;
-    grid-template-columns: 1 1fr;
+    grid-template-columns: 100%;
     gap: 25px 20px;
     list-style: none;
 }
 
 .msg {
     margin: auto;
+    font-weight: 600;
     font-size: 1.25rem;
-    font-weight: bold;
     list-style: none;
     color: rgb(105, 105, 105);
 }
 
 @media screen and (min-width: 600px) {
     .ticket-list {
-        max-width: none;
-        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        grid-template-columns: repeat(2, calc(50% - 10px));
     }
 }
 
 @media screen and (min-width: 768px) {
     .ticket-list {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, calc(33% - 10px));
     }
 }
 
 @media screen and (min-width: 1024px) {
     .ticket-list {
         max-width: 1380px;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, calc(25% - 15px));
     }
 }

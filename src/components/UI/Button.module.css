@@ -3,5 +3,9 @@
     padding: 0 11px;
     border-radius: 8px;
     border: none;
+    color: #f8f8f8;
+    font-weight: 600;
     cursor: pointer;
+    height: 40px;
+    box-shadow: 6px 10px 14px rgba(0, 0, 0, .12);
 }

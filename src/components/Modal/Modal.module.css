@@ -4,7 +4,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 99;
 }
 
 .modal-overlay {
@@ -18,8 +19,9 @@
     justify-content: space-between;
     width: 90%;
     height: 400px;
-    padding: 15px;
-    background-color: #fff;
+    padding: 20px;
+    background-color: #2e3238;
+    z-index: 100;
 }
 
 .modal-overlay header,
@@ -28,13 +30,20 @@
     justify-content: space-between;
 }
 
+.modal-overlay footer h4 {
+    font-size: 0.875rem;
+    color: #acb5c0;
+}
+
 .description {
     margin: 25px 0;
+    padding-right: 10px;
+    overflow-y: auto;
+    white-space: pre-line;
 }
 
 .modal-overlay button {
-    height: 30px;
-    background-color: lightblue;
+    background: linear-gradient(to right, #dd4242, #c93051);
 }
 
 @media screen and (min-width: 768px) {

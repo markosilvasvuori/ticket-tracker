@@ -1,28 +1,44 @@
 .ticket {
     position: relative;
-    /* max-width: 390px; */
     min-height: 210px;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 15px;
-    background-color: #fff;
+    background-color: #2e3238;
     cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.ticket:hover {
+    background-color: #343940;
+}
+
+.ticket-solved {
+    background-color: #2a2d33;
 }
 
 .ticket-container {
-    height: 484px;
+    height: 535px;
+}
+
+.ticket h3 {
+    font-size: 1.25rem;
 }
 
 .names {
     margin-bottom: 25px;
 }
 
+.names h4 {
+    margin-bottom: 2px;
+}
+
 .names h4,
-.ticket footer p {
-    font-weight: bold;
+footer h4 {
+    color: #acb5c0;
 }
 
 .description {
-    margin: 25px 0;
+    margin: 30px 0;
 }
 
 .ticket footer {
@@ -30,42 +46,33 @@
     justify-content: space-between;
 }
 
-.ticket footer span {
-    font-weight: normal;
-}
-
 .separator {
-    margin-top: 8px;
+    margin-top: 12px;
 }
 
 .button-red {
-    color: #fff;
-    background-color: red;
+    background: linear-gradient(to right, #dd4242, #c93051);
+}
+
+.button-red:hover {
+    background: linear-gradient(to right, #c03939, #a52843);
 }
 
 .button-green {
-    color: #fff;
-    background-color: green;
+    background: linear-gradient(to right, #08c794, #03a1b6);
 }
 
-.low {
-    color: green;
-}
-
-.medium {
-    color: orange;
-}
-
-.high {
-    color: red;
-}
-
-.open {
-    background-color: lightgreen;
+.button-green:hover {
+    background: linear-gradient(to right, #069b73 40%, #027585);
 }
 
 .solved {
-    background-color: lightblue;
+    background: linear-gradient(to right, #6acdf5, #5392f0);
+    /* background: linear-gradient(to right, #6e40eb 40%, #8d2fcc); */
+}
+
+.solved:hover {
+    background: linear-gradient(to right, #5cb4d6, #4478c7);
 }
 
 .confirm-delete {
@@ -80,8 +87,7 @@
     height: 100%;
     padding: 0 25px;
     text-align: center;
-    color: #fff;
-    background-color: rgba(0, 0, 0, .89);
+    background-color: rgba(0, 0, 0, .9);
     border-radius: 10px;
 }
 
@@ -106,6 +112,10 @@
 .ticket-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.ticket-buttons button {
+    min-width: 40px;
 }
 
 .crop-title,

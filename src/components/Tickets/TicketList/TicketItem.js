@@ -37,10 +37,10 @@ const TicketItem = (props) => {
 
     return (
         <li>
-            <Container className={classes["ticket-container"]}>
+            <Container className={`${classes["ticket-container"]} ${props.isSolved ? classes["ticket-solved"] : ''}`}>
                 <div className={classes["ticket-buttons"]}>
                     <Button 
-                        className={props.isSolved ? classes.solved : classes.open}
+                        className={props.isSolved ? classes.solved : classes["button-green"]}
                         onClick={handleStatus}
                     >
                         {props.isSolved ? 'Solved' : 'Open'}
@@ -48,7 +48,12 @@ const TicketItem = (props) => {
                     <Button className={classes["button-red"]} onClick={toggleConfirmDelete}>X</Button>
                 </div>
                 <Card className={classes.ticket} onClick={modalIsShowingHandler}>
-                    <h3 className={classes["crop-title"]} style={{color: props.priorityColor}}>{props.title}</h3>
+                    <h3 
+                        className={classes["crop-title"]} 
+                        style={{color: `${props.isSolved ? '#6acdf5' : props.priorityColor}`}}
+                    >
+                        {props.title}
+                    </h3>
                     <p className={`${classes.description} ${classes["crop-description"]}`}>{props.description}</p>
                     <div className={classes.names}>
                         <h4>Reporter:</h4>
@@ -57,8 +62,14 @@ const TicketItem = (props) => {
                         <p className={classes["crop-name"]}>{props.assignee}</p>
                     </div>
                     <footer>
-                        <p>Priority: <span style={{color: props.priorityColor}}>{props.priority}</span></p>
-                        <p>Date: <span>{props.date}</span></p>
+                        <div>
+                            <h4>Priority:</h4>
+                            <p style={{color: props.priorityColor}}>{props.priority}</p>
+                        </div>
+                        <div>
+                            <h4>Created:</h4>
+                            <p>{props.date}</p>
+                        </div>
                     </footer>
                 </Card>
                 {isDeleting && 
